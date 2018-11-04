@@ -84,7 +84,7 @@ class CsvViewTest extends TestCase
         $output = $this->view->render(false);
 
         $bom = chr(0xEF) . chr(0xBB) . chr(0xBF);
-        $expected = $bom . 'test' . PHP_EOL . 'test2' . PHP_EOL . 'test3'. PHP_EOL;
+        $expected = $bom . 'test' . PHP_EOL . 'test2' . PHP_EOL . 'test3' . PHP_EOL;
         $this->assertSame($expected, $output);
     }
 
@@ -106,11 +106,11 @@ class CsvViewTest extends TestCase
             ['test'],
             ['test2'],
         ];
-        $this->view->set(['data' => $data,  '_header' => $header, '_serialize' => 'data', '_bom' => true, '_csvEncoding' => 'UTF-8']);
+        $this->view->set(['data' => $data, '_header' => $header, '_serialize' => 'data', '_bom' => true, '_csvEncoding' => 'UTF-8']);
         $output = $this->view->render(false);
 
         $bom = chr(0xEF) . chr(0xBB) . chr(0xBF);
-        $expected = $bom . 'column1'. PHP_EOL . 'test' . PHP_EOL . 'test2' . PHP_EOL;
+        $expected = $bom . 'column1' . PHP_EOL . 'test' . PHP_EOL . 'test2' . PHP_EOL;
         $this->assertSame($expected, $output);
     }
 
